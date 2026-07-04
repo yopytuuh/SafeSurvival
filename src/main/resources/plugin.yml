@@ -1,0 +1,6 @@
+name: SafeSurvival
+version: '${version}'
+
+main: fr.yopytuuh.safesurvival.SafeSurvival
+api-version: '26.1.2'
+load: POSTWORLD
