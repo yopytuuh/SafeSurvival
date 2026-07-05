@@ -2,7 +2,7 @@
 # Here you can choose which commands to enable or disable.
 #
 # true = blocked
-# false = enabled
+# false = allowed
 
 commands:
   # Gamemode and rules

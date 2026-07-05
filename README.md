@@ -67,7 +67,7 @@ commands:
 When a player attempts to execute a blocked command, the command is cancelled and a message is broadcast to all online players:
 
 ```text
-[!] Steve tried this: /gamemode creative
+[!] yopytuuh tried this: /gamemode creative
 ```
 
 This allows everyone on the server to know when someone attempted to use a forbidden command.
@@ -78,7 +78,7 @@ This allows everyone on the server to know when someone attempted to use a forbi
 
 1. Download the latest release.
 2. Place the `.jar` file into your server's `plugins` folder.
-3. Start your Paper server.
+3. Start your server.
 4. Edit the generated `config.yml` file if needed.
 5. Restart or reload the server.
 
@@ -86,14 +86,11 @@ This allows everyone on the server to know when someone attempted to use a forbi
 
 ## 📦 Compatibility
 
-* Paper 1.21+
-* Java 21+
+- Spigot 1.8+
+- Paper 1.8+ (recommended 1.20+ / 1.21+)
+- Java 21+
 
----
-
-## 🎯 Goal
-
-SafeSurvival was created for survival worlds between friends where trust is important, but where everyone wants the certainty that nobody can use administrative commands to gain an unfair advantage.
+*Tested on Paper 26.1.2*
 
 ---
 
