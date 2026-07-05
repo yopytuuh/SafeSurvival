@@ -1,6 +1,8 @@
-# 🛡️ SafeSurvival
+<img src="img/safesurvival.png" alt="logo" width="255">
 
-**SafeSurvival** is a lightweight Paper plugin designed for private survival servers and groups of friends who want to ensure that nobody cheats, even if some players have OP permissions.
+# 🛡️ Safe Survival
+
+**Safe Survival** is a lightweight Paper plugin designed for private survival servers and groups of friends who want to ensure that nobody cheats, even if some players have OP permissions.
 
 The plugin blocks a configurable list of vanilla commands that could be used to gain unfair advantages, while still allowing useful plugin commands such as `/home`, `/spawn`, `/warp`, etc.
 
@@ -19,7 +21,7 @@ The plugin blocks a configurable list of vanilla commands that could be used to 
 
 ## 📋 Example blocked commands
 
-SafeSurvival can block commands such as:
+Safe Survival can block commands such as:
 
 * `/gamemode`
 * `/give`
