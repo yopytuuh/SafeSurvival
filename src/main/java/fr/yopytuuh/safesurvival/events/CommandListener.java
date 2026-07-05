@@ -32,7 +32,7 @@ public class CommandListener implements Listener {
         if (blockedCommands.contains(command.toLowerCase())) {
             event.setCancelled(true);
 
-            Bukkit.broadcast(Component.text("§7[§cSafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage()));
+            Bukkit.broadcastMessage("§7[§cSafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage());
         }
     }
 }
