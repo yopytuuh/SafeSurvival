@@ -1,0 +1,93 @@
+# SAFE SURVIVAL CONFIG
+# Here you can choose which commands to enable or disable.
+#
+# true = blocked
+# false = enabled
+
+commands:
+  # Gamemode and rules
+  gamemode: true
+  defaultgamemode: true
+  gamerule: true
+  difficulty: true
+
+  # Items and entities
+  give: true
+  item: true
+  summon: true
+  loot: true
+  clear: true
+  kill: true
+  effect: true
+  enchant: true
+  xp: true
+  experience: true
+  attribute: true
+  damage: true
+
+  # Teleportation
+  tp: true
+  teleport: true
+  spreadplayers: true
+  ride: true
+  spectate: true
+
+  # World
+  fill: true
+  setblock: true
+  clone: true
+  place: true
+  fillbiome: true
+  data: true
+  execute: true
+  function: true
+  forceload: true
+  worldborder: true
+  setworldspawn: true
+  spawnpoint: true
+
+  # Time
+  time: true
+  weather: true
+  tick: true
+
+  # Informations
+  seed: true
+  locate: true
+  locatebiome: true
+
+  # Player data
+  recipe: true
+  advancement: true
+
+  # GUI
+  title: true
+  tellraw: true
+  bossbar: true
+  playsound: true
+
+  # Admin
+  reload: true
+  stop: true
+  debug: true
+  perf: true
+  jfr: true
+  save-all: true
+  save-on: true
+  save-off: true
+
+  # Permissions
+  op: true
+  deop: true
+
+  # Players
+  kick: true
+  ban: true
+  ban-ip: true
+  pardon: true
+  pardon-ip: true
+  whitelist: true
+
+  # Misc
+  publish: true
+  trigger: true

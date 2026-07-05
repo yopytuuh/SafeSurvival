@@ -1,6 +1,9 @@
 name: SafeSurvival
 version: '${version}'
 
+
 main: fr.yopytuuh.safesurvival.SafeSurvival
+description: Stop cheating
+author: yopytuuh
 api-version: '26.1.2'
 load: POSTWORLD
