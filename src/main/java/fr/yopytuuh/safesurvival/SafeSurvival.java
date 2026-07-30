@@ -18,11 +18,11 @@ public final class SafeSurvival extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new CommandListener(blockedCommands), this);
 
-        getLogger().info("[SafeSurvival] Enabled.");
+        getLogger().info("Enabled.");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("[SafeSurvival] Disabled.");
+        getLogger().info("Disabled.");
     }
 }
