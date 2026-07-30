@@ -7,4 +7,4 @@ description: Stop cheating
 author: yopytuuh
 api-version: '26.1.2'
 load: POSTWORLD
-prefix: "[SafeSurvival]"
+prefix: "SafeSurvival"
