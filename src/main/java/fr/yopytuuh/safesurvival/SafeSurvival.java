@@ -1,6 +1,5 @@
 package fr.yopytuuh.safesurvival;
 
-import fr.yopytuuh.safesurvival.events.CommandListener;
 import fr.yopytuuh.safesurvival.manager.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
