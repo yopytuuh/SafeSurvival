@@ -1,6 +1,7 @@
 package fr.yopytuuh.safesurvival;
 
 import fr.yopytuuh.safesurvival.events.CommandListener;
+import fr.yopytuuh.safesurvival.manager.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
@@ -8,30 +9,17 @@ import java.util.Set;
 
 public final class SafeSurvival extends JavaPlugin {
 
-    private final Set<String> blockedCommands = new HashSet<>();
+    private Set<String> blockedCommands = new HashSet<>();
+
+    private ConfigManager configManager;
 
     @Override
     public void onEnable() {
 
-        saveDefaultConfig();
+        configManager = new ConfigManager(this);
 
-        if (getConfig().getConfigurationSection("commands") != null) {
-            for (String command : getConfig()
-                    .getConfigurationSection("commands")
-                    .getKeys(false)) {
-
-                if (getConfig().getBoolean("commands." + command)) {
-                    blockedCommands.add(command.toLowerCase());
-                }
-            }
-        } else {
-            getServer().getLogger().warning("[SafeSurvival] config.yml file is corrupted; please delete it to allow it to be regenerated.");
-        }
-
-        getServer().getPluginManager().registerEvents(
-                new CommandListener(blockedCommands),
-                this
-        );
+        configManager.load();
+        blockedCommands = configManager.getBlockedCommands();
 
         getLogger().info("[SafeSurvival] Enabled.");
     }
