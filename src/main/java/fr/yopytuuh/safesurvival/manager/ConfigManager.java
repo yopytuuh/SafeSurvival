@@ -18,7 +18,7 @@ public class ConfigManager {
     public void load() {
         plugin.saveDefaultConfig();
 
-        if (plugin.getConfig().getConfigurationSection("commands") != null) {
+        if (get().getConfigurationSection("commands") != null) {
             for (String command : plugin.getConfig()
                     .getConfigurationSection("commands")
                     .getKeys(false)) {
