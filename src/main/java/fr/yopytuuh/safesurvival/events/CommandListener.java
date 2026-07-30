@@ -1,7 +1,5 @@
 package fr.yopytuuh.safesurvival.events;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -32,7 +30,7 @@ public class CommandListener implements Listener {
         if (blockedCommands.contains(command.toLowerCase())) {
             event.setCancelled(true);
 
-            Bukkit.broadcastMessage("§7[§cSafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage());
+            Bukkit.broadcastMessage("§7[§2SafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage());
         }
     }
 }

@@ -8,3 +8,14 @@ author: yopytuuh
 api-version: '26.1.2'
 load: POSTWORLD
 prefix: "SafeSurvival"
+
+commands:
+  ss:
+    description: "safe survival commands"
+    permission: safesurvival.admin
+    usage: "/ss"
+
+permissions:
+  safesurvival.admin:
+    description: "Admin permissions"
+    default: op
