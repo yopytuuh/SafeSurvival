@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ConfigManager {
 
-    private JavaPlugin plugin;
+    private final JavaPlugin plugin;
     private final Set<String> blockedCommands = new HashSet<>();
 
     public ConfigManager(JavaPlugin plugin) {
