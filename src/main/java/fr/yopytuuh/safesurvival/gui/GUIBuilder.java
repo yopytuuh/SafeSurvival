@@ -6,7 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 public class GUIBuilder {
 
@@ -16,8 +17,11 @@ public class GUIBuilder {
         gui = new GUI(title, size);
     }
 
-    public GUIBuilder item(int slot, ItemStack item, Consumer<InventoryClickEvent> event) {
-        gui.setButton(slot, new Button(item, event));
+    public GUIBuilder item(int slot,
+                           Supplier<ItemStack> supplier,
+                           BiConsumer<GUI, InventoryClickEvent> action) {
+
+        gui.setButton(slot, new Button(supplier, action));
         return this;
     }
 

@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -35,6 +36,14 @@ public class GUI implements InventoryHolder {
 
     public void open(Player player) {
         player.openInventory(inventory);
+    }
+
+    public void refresh() {
+
+        for (Map.Entry<Integer, Button> entry : buttons.entrySet()) {
+            inventory.setItem(entry.getKey(), entry.getValue().getItem());
+        }
+
     }
 
 }

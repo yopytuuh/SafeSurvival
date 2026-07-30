@@ -19,6 +19,7 @@ public class SSTabCompleter implements TabCompleter {
             List<String> commands = new ArrayList<>();
 
             commands.add("config");
+            commands.add("reload");
 
             return StringUtil.copyPartialMatches(args[0], commands, new ArrayList<>());
         }

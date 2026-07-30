@@ -3,26 +3,29 @@ package fr.yopytuuh.safesurvival.gui.utils;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 public class Button {
 
-    private final ItemStack item;
-    private final Consumer<InventoryClickEvent> action;
+    private final Supplier<ItemStack> supplier;
+    private final BiConsumer<GUI, InventoryClickEvent> action;
 
-    public Button(ItemStack item, Consumer<InventoryClickEvent> action) {
-        this.item = item;
+    public Button(Supplier<ItemStack> supplier,
+                  BiConsumer<GUI, InventoryClickEvent> action) {
+        this.supplier = supplier;
         this.action = action;
     }
 
     public ItemStack getItem() {
-        return item;
+        return supplier.get();
     }
 
-    public void click(InventoryClickEvent event) {
-        if(action != null) {
-            action.accept(event);
-        }
+    public BiConsumer<GUI, InventoryClickEvent> getAction() {
+        return action;
     }
 
+    public void click(GUI gui, InventoryClickEvent event) {
+        action.accept(gui, event);
+    }
 }

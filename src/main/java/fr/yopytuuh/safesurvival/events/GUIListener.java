@@ -18,7 +18,7 @@ public class GUIListener implements Listener {
         Button button = gui.getButton(event.getSlot());
 
         if(button != null) {
-            button.click(event);
+            button.click(gui, event);
         }
 
     }

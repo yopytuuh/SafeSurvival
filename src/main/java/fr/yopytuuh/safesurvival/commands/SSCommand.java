@@ -22,7 +22,7 @@ public class SSCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        final SSConfig configCommand = new SSConfig();
+        final SSConfig configCommand = new SSConfig(config);
         final SSReload reloadCommand = new SSReload(config);
 
         if (args.length == 0) {
@@ -37,6 +37,7 @@ public class SSCommand implements CommandExecutor {
                 break;
             case "reload":
                 reloadCommand.execute(sender, args);
+                break;
 
             default:
                 sender.sendMessage("§cThis command does not exist.");

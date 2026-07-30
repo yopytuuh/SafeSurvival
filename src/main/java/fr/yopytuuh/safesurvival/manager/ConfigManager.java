@@ -36,9 +36,22 @@ public class ConfigManager {
         plugin.reloadConfig();
     }
 
+    public void save() {
+        plugin.saveConfig();
+    }
+
     public boolean isCommandBlocked(String command) {
         String path = "commands." + command;
         return plugin.getConfig().getBoolean(path);
+    }
+
+    public String getCommandStatus(String command) {
+        boolean blocked = isCommandBlocked(command);
+        if(blocked) {
+            return "§c§lBLOCKED";
+        } else {
+            return "§2§lALLOWED";
+        }
     }
 
     public Set<String> getBlockedCommands() {
