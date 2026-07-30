@@ -17,7 +17,7 @@ public class SSConfig {
         }
 
         GUI gui = new GUIBuilder("Safe Survival Config", 54)
-                .item(13, new ItemBuilder(Material.DIAMOND).name("§e§lCOUCOU").lore("coucou", "coucou").build(), event -> {})
+                .item(13, new ItemBuilder(Material.DIAMOND).name("§e§lTest").lore("test", "test").build(), event -> {})
                 .build();
 
         gui.open(player);
