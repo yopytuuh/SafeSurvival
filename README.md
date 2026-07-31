@@ -1,4 +1,4 @@
-<img src="img/safesurvival2.png">
+<img src="img/safesurvival2.png" alt="logo" width="512">
 
 # 🛡️ SafeSurvival
 
