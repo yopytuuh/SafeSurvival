@@ -18,10 +18,9 @@ public final class SafeSurvival extends JavaPlugin {
 
         ConfigManager config = new ConfigManager(this);
         config.load();
-        Set<String> blockedCommands = config.getBlockedCommands();
 
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
-        getServer().getPluginManager().registerEvents(new CommandListener(blockedCommands), this);
+        getServer().getPluginManager().registerEvents(new CommandListener(config), this);
         getServer().getPluginManager().registerEvents(new GamemodeListener(config), this);
 
         PluginCommand command = getCommand("ss");

@@ -28,7 +28,7 @@ public class ConfigManager {
                 }
             }
         } else {
-            plugin.getServer().getLogger().warning("Safe Survival config.yml file is corrupted; please delete it to allow it to be regenerated.");
+            plugin.getServer().getLogger().warning("config.yml file is corrupted; please delete it to allow it to be regenerated.");
         }
     }
 
@@ -41,8 +41,7 @@ public class ConfigManager {
     }
 
     public boolean isCommandBlocked(String command) {
-        String path = "commands." + command;
-        return plugin.getConfig().getBoolean(path);
+        return get().getBoolean("commands." + command);
     }
 
     public String getCommandStatus(String command) {

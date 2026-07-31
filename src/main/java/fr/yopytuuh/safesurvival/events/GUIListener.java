@@ -5,6 +5,7 @@ import fr.yopytuuh.safesurvival.gui.utils.GUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class GUIListener implements Listener {
 
@@ -20,6 +21,14 @@ public class GUIListener implements Listener {
         if(button != null) {
             button.click(gui, event);
         }
+    }
+
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent event) {
+
+        if(!(event.getInventory().getHolder() instanceof GUI gui)) return;
+
+        gui.close(event);
 
     }
 

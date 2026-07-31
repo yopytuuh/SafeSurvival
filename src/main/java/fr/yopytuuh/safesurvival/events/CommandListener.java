@@ -1,18 +1,20 @@
 package fr.yopytuuh.safesurvival.events;
 
+import fr.yopytuuh.safesurvival.manager.ConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.Locale;
 import java.util.Set;
 
 public class CommandListener implements Listener {
 
-    private final Set<String> blockedCommands;
+    private final ConfigManager config;
 
-    public CommandListener(Set<String> blockedCommands) {
-        this.blockedCommands = blockedCommands;
+    public CommandListener(ConfigManager config) {
+        this.config = config;
     }
 
     @EventHandler
@@ -27,7 +29,7 @@ public class CommandListener implements Listener {
             command = command.substring(command.indexOf(':') + 1);
         }
 
-        if (blockedCommands.contains(command.toLowerCase())) {
+        if (config.isCommandBlocked(command.toLowerCase())) {
             event.setCancelled(true);
 
             Bukkit.broadcastMessage("§7[§2SafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage());
