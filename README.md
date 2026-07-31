@@ -1,52 +1,125 @@
-<img src="img/safesurvival.png" alt="logo" width="255">
+# 🛡️ SafeSurvival
 
-# 🛡️ Safe Survival
+**SafeSurvival** is a modern Paper plugin that prevents cheating on survival servers by blocking selected vanilla commands, even for OP players.
 
-**Safe Survival** is a lightweight Paper plugin designed for private survival servers and groups of friends who want to ensure that nobody cheats, even if some players have OP permissions.
+Designed for private SMPs and friend groups, it provides an easy-to-use configuration system with an in-game GUI.  
 
-The plugin blocks a configurable list of vanilla commands that could be used to gain unfair advantages, while still allowing useful plugin commands such as `/home`, `/spawn`, `/warp`, etc.
+**Only v1.0 of SafeSurvival is fully compatible with any spigot/bukkit/paper version**
 
----
-
-## ✨ Features
-
-* 🚫 Blocks configurable vanilla commands
-* ⚙️ Fully configurable through `config.yml`
-* 👑 Works even if players have OP permissions
-* 📢 Broadcasts attempted uses of blocked commands
-* 🔒 Supports namespaced commands (`minecraft:`, `bukkit:`, `paper:`, etc.)
-* ⚡ Lightweight and optimized for Paper servers
+You can add **new commands from other plugins** in the config.yml file to block these commands too *(These new commands cannot be visible in `/ss config`)*
 
 ---
 
-## 📋 Example blocked commands
+# ✨ Features
 
-Safe Survival can block commands such as:
-
-* `/gamemode`
-* `/give`
-* `/gamerule`
-* `/effect`
-* `/enchant`
-* `/summon`
-* `/tp`
-* `/teleport`
-* `/time`
-* `/weather`
-* `/fill`
-* `/setblock`
-* `/execute`
-* `/reload`
-* `/debug`
-* `/seed`
-
-And many more.
+- 🚫 Block vanilla commands individually
+- ⚙️ Fully configurable through `config.yml`
+- 🖥️ In-game configuration GUI (`/ss config`)
+- 👑 Blocks commands even for OP players
+- 📢 Broadcasts attempted uses of blocked commands
+- 🔒 Supports namespaced commands (`minecraft:`, `bukkit:`, `paper:`, ...)
+- ⚡ Lightweight and optimized for Paper
 
 ---
 
-## ⚙️ Configuration
+# 📋 Supported Commands
 
-All blocked commands can be enabled or disabled individually in `config.yml`.
+SafeSurvival can block commands from many categories, including:
+
+You can add new commands from other plugins in the config.yml file to block these commands too (These new commands cannot be visible in `/ss config`)
+
+### Gamemode & Rules
+- `/gamemode`
+- `/defaultgamemode`
+- `/gamerule`
+- `/difficulty`
+
+### Items & Entities
+- `/give`
+- `/item`
+- `/summon`
+- `/loot`
+- `/clear`
+- `/kill`
+- `/effect`
+- `/enchant`
+- `/xp`
+- `/experience`
+- `/attribute`
+- `/damage`
+
+### Teleportation
+- `/tp`
+- `/teleport`
+- `/spreadplayers`
+- `/ride`
+- `/spectate`
+
+### World
+- `/fill`
+- `/setblock`
+- `/clone`
+- `/place`
+- `/fillbiome`
+- `/data`
+- `/execute`
+- `/function`
+- `/forceload`
+- `/worldborder`
+- `/setworldspawn`
+- `/spawnpoint`
+
+### Time
+- `/time`
+- `/weather`
+- `/tick`
+
+### Information
+- `/seed`
+- `/locate`
+- `/locatebiome`
+
+### Player Data
+- `/recipe`
+- `/advancement`
+
+### GUI
+- `/title`
+- `/tellraw`
+- `/bossbar`
+- `/playsound`
+
+### Administration
+- `/reload`
+- `/stop`
+- `/debug`
+- `/perf`
+- `/jfr`
+- `/save-all`
+- `/save-on`
+- `/save-off`
+
+### Permissions
+- `/op`
+- `/deop`
+
+### Players
+- `/kick`
+- `/ban`
+- `/ban-ip`
+- `/pardon`
+- `/pardon-ip`
+- `/whitelist`
+
+### Miscellaneous
+- `/publish`
+- `/trigger`
+
+---
+
+# ⚙️ Configuration
+
+Every command can be enabled or disabled individually.
 
 Example:
 
@@ -54,48 +127,62 @@ Example:
 commands:
   gamemode: true
   give: true
-  gamerule: true
-  tp: false
   teleport: false
 ```
 
-* `true` = command is blocked
-* `false` = command is allowed
+- `true` → Command is blocked.
+- `false` → Command is allowed.
 
----
-
-## 📢 Attempt Detection
-
-When a player attempts to execute a blocked command, the command is cancelled and a message is broadcast to all online players:
+You can also edit the configuration directly in-game using:
 
 ```text
-[!] yopytuuh tried this: /gamemode creative
+/ss config
 ```
 
-This allows everyone on the server to know when someone attempted to use a forbidden command.
+---
+
+# 📢 Command Detection
+
+When a blocked command is executed:
+
+- The command is cancelled.
+- A broadcast is sent to all online players.
+
+Example:
+
+```text
+[SafeSurvival] yopytuuh tried this: /gamemode creative
+```
 
 ---
 
-## 🔧 Installation
+# 📥 Installation
 
 1. Download the latest release.
-2. Place the `.jar` file into your server's `plugins` folder.
-3. Start your server.
-4. Edit the generated `config.yml` file if needed.
-5. Restart or reload the server.
+2. Place the `.jar` inside your server's `plugins` folder.
+3. Start the server.
+4. Configure the plugin with `/ss config` or by editing `config.yml`.
+5. Enjoy a cheat-free survival experience.
 
 ---
 
-## 📦 Compatibility
+# 💻 Requirements
 
-- Spigot 1.8+
-- Paper 1.8+ (recommended 1.20+ / 1.21+)
-- Java 21+
-
-*Tested on Paper 26.1.2*
+- **Paper 26.1+ or newer**
+- **Java 25 or newer**
+- **Only v1.0 of SafeSurvival is fully compatible with any spigot/bukkit/paper version**
 
 ---
 
-## 📄 License
+# 📌 Commands
 
-This project is released under the MIT License.
+| Command | Description |
+|---------|-------------|
+| `/ss config` | Opens the SafeSurvival configuration GUI. |*
+| `/ss reload` | Reload plugin
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
