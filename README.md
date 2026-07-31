@@ -1,3 +1,5 @@
+<img src="img/safesurvival2.png">
+
 # 🛡️ SafeSurvival
 
 **SafeSurvival** is a modern Paper plugin that prevents cheating on survival servers by blocking selected vanilla commands, even for OP players.
