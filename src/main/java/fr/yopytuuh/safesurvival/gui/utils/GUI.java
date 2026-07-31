@@ -46,6 +46,10 @@ public class GUI implements InventoryHolder {
             closeAction.accept(event);
     }
 
+    public void close() {
+        inventory.close();
+    }
+
     public void open(Player player) {
         player.openInventory(inventory);
     }
