@@ -3,7 +3,7 @@ version: '${version}'
 
 
 main: fr.yopytuuh.safesurvival.SafeSurvival
-description: Stop cheating
+description: "A configurable plugin that blocks unsafe commands to ensure fair survival gameplay with friends."
 author: yopytuuh
 api-version: '26.1.2'
 load: POSTWORLD

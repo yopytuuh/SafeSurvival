@@ -20,8 +20,6 @@ public class SSCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
 
-        Player player = (Player) sender;
-
         final SSConfig configCommand = new SSConfig(config);
         final SSReload reloadCommand = new SSReload(config);
 

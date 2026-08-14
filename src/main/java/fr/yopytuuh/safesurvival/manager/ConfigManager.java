@@ -1,15 +1,16 @@
 package fr.yopytuuh.safesurvival.manager;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class ConfigManager {
 
     private final JavaPlugin plugin;
-    private final Set<String> blockedCommands = new HashSet<>();
 
     public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -17,23 +18,61 @@ public class ConfigManager {
 
     public void load() {
         plugin.saveDefaultConfig();
+        validate();
+    }
 
-        if (get().getConfigurationSection("commands") != null) {
-            for (String command : plugin.getConfig()
-                    .getConfigurationSection("commands")
-                    .getKeys(false)) {
+    public void validate() {
 
-                if (plugin.getConfig().getBoolean("commands." + command)) {
-                    blockedCommands.add(command.toLowerCase());
-                }
-            }
-        } else {
-            plugin.getServer().getLogger().warning("config.yml file is corrupted; please delete it to allow it to be regenerated.");
+        FileConfiguration config = get();
+        ConfigurationSection commands = config.getConfigurationSection("commands");
+        InputStream resource = plugin.getResource("config.yml");
+
+        FileConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(resource));
+
+        if(resource == null) {
+            plugin.getLogger().severe("Could not load default config.yml. SafeSurvival.jar may be corrupted");
         }
+
+        if (commands == null) {
+            plugin.getLogger().warning("Missing 'commands' section in config.yml. Creating it.");
+
+            config.createSection("commands");
+            save();
+            return;
+        }
+
+        ConfigurationSection defaultCommands = defaultConfig.getConfigurationSection("commands");
+
+        if (defaultCommands == null) {
+            plugin.getLogger().severe("Missing 'commands' section in default config.yml. SafeSurvival.jar may be corrupted.");
+            return;
+        }
+
+        for (String command : defaultCommands.getKeys(false)) {
+
+            String path = "commands." + command;
+
+            if (!config.contains(path)) {
+                plugin.getLogger().warning("Missing config option '" + path+ "'. Using default value.");
+
+                config.set(path, defaultConfig.get(path));
+                continue;
+            }
+
+            Object value = config.get(path);
+
+            if (!(value instanceof Boolean)) {
+                plugin.getLogger().warning("Invalid value for '" + path+ "'. Expected true or false.");
+            }
+        }
+
+        save();
+        plugin.getLogger().info("config.yml loaded and checked.");
     }
 
     public void reload() {
         plugin.reloadConfig();
+        validate();
     }
 
     public void save() {
@@ -51,10 +90,6 @@ public class ConfigManager {
         } else {
             return "§2§lALLOWED";
         }
-    }
-
-    public Set<String> getBlockedCommands() {
-        return blockedCommands;
     }
 
     public FileConfiguration get() {

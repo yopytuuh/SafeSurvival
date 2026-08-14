@@ -9,8 +9,6 @@ import fr.yopytuuh.safesurvival.utils.SSTabCompleter;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Set;
-
 public final class SafeSurvival extends JavaPlugin {
 
     @Override
@@ -23,6 +21,7 @@ public final class SafeSurvival extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CommandListener(config), this);
         getServer().getPluginManager().registerEvents(new GamemodeListener(config), this);
 
+        getLogger().info(getPluginMeta().getVersion());
         PluginCommand command = getCommand("ss");
 
         if (command != null) {
