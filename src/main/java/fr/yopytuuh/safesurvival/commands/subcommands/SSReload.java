@@ -13,7 +13,7 @@ public class SSReload {
 
     public void execute(CommandSender sender, String[] args) {
 
-        config.reload();
+        config.reload(sender);
         sender.sendMessage("§7[§2SafeSurvival§7]§6 reloaded.");
     }
 

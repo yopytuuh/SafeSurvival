@@ -1,8 +1,11 @@
 package fr.yopytuuh.safesurvival.manager;
 
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.InputStream;
@@ -34,10 +37,7 @@ public class ConfigManager {
         }
 
         if (commands == null) {
-            plugin.getLogger().warning("Missing 'commands' section in config.yml. Creating it.");
-
-            config.createSection("commands");
-            save();
+            plugin.getLogger().severe("Missing 'commands' section in config.yml. Delete config.yml and let it be recreated please.");
             return;
         }
 
@@ -53,7 +53,7 @@ public class ConfigManager {
             String path = "commands." + command;
 
             if (!config.contains(path)) {
-                plugin.getLogger().warning("Missing config option '" + path+ "'. Using default value.");
+                plugin.getLogger().info("Missing config option '" + path+ "' in config.yml. Using default value.");
 
                 config.set(path, defaultConfig.get(path));
                 continue;
@@ -62,7 +62,7 @@ public class ConfigManager {
             Object value = config.get(path);
 
             if (!(value instanceof Boolean)) {
-                plugin.getLogger().warning("Invalid value for '" + path+ "'. Expected true or false.");
+                plugin.getLogger().warning("Invalid value for '" + path+ "' in config.yml. Expected true or false.");
             }
         }
 
@@ -70,9 +70,68 @@ public class ConfigManager {
         plugin.getLogger().info("config.yml loaded and checked.");
     }
 
+    public void validate(CommandSender sender) {
+
+        boolean check = false;
+        FileConfiguration config = get();
+        ConfigurationSection commands = config.getConfigurationSection("commands");
+        InputStream resource = plugin.getResource("config.yml");
+
+        FileConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(resource));
+
+        if(resource == null) {
+            plugin.getLogger().severe("Could not load default config.yml. SafeSurvival.jar may be corrupted");
+        }
+
+        if (commands == null) {
+            plugin.getLogger().severe("Missing 'commands' section in config.yml. Delete config.yml and let it be recreated please.");
+            return;
+        }
+
+        ConfigurationSection defaultCommands = defaultConfig.getConfigurationSection("commands");
+
+        if (defaultCommands == null) {
+            plugin.getLogger().severe("Missing 'commands' section in default config.yml. SafeSurvival.jar may be corrupted.");
+            return;
+        }
+
+        for (String command : defaultCommands.getKeys(false)) {
+
+            String path = "commands." + command;
+
+            if (!config.contains(path)) {
+                plugin.getLogger().info("Missing config option '" + path+ "' in config.yml. Using default value.");
+
+                config.set(path, defaultConfig.get(path));
+                check = true;
+                continue;
+            }
+
+            Object value = config.get(path);
+
+            if (!(value instanceof Boolean)) {
+                plugin.getLogger().warning("Invalid value for '" + path+ "' in config.yml. Expected true or false.");
+                check = true;
+            }
+        }
+
+        save();
+        plugin.getLogger().info("config.yml loaded and checked.");
+        if(check) {
+            if(sender instanceof Player) {
+                sender.sendMessage("§7[§2SafeSurvival§7]§6 There was a problem, please check console.");
+            }
+        }
+    }
+
     public void reload() {
         plugin.reloadConfig();
         validate();
+    }
+
+    public void reload(CommandSender sender) {
+        plugin.reloadConfig();
+        validate(sender);
     }
 
     public void save() {
