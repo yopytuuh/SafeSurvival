@@ -1,5 +1,6 @@
 package fr.yopytuuh.safesurvival.manager;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,8 +28,21 @@ public class ConfigManager {
         plugin.saveConfig();
     }
 
+    public FileConfiguration get() {
+        return plugin.getConfig();
+    }
+
     public boolean isCommandBlocked(String command) {
-        return get().getBoolean("commands." + command);
+        return get().getBoolean("commands." + command + ".blocked");
+    }
+
+    public Material getCommandMaterial(String command) {
+        String item = get().getString("commands." + command + ".item");
+        try {
+            return Material.valueOf(item);
+        } catch (IllegalArgumentException | NullPointerException e) {
+            return Material.COMMAND_BLOCK;
+        }
     }
 
     public String getCommandStatus(String command) {
@@ -38,9 +52,5 @@ public class ConfigManager {
         } else {
             return "§2§lALLOWED";
         }
-    }
-
-    public FileConfiguration get() {
-        return plugin.getConfig();
     }
 }

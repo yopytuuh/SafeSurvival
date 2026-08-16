@@ -5,89 +5,224 @@
 # false = allowed
 
 commands:
+
+  # you can add your commands by typing the command name without the '/'
+  # and adding the same structure with the options 'blocked' and 'item'
+  # the item is shown in '/ss config' gui
+  # example (you have to delete the '#'):
+  # custom_command:
+  #  blocked: true
+  #  item: null
+
   # Gamemode and rules
-  gamemode: true
-  defaultgamemode: true
-  gamerule: true
-  difficulty: true
+  gamemode:
+    blocked: true
+    item: NETHERITE_SWORD
+  defaultgamemode:
+    blocked: true
+    item: DIAMOND_SWORD
+  gamerule:
+    blocked: true
+    item: GOLDEN_SWORD
+  difficulty:
+    blocked: true
+    item: STONE_SWORD
 
   # Items and entities
-  give: true
-  item: true
-  summon: true
-  loot: true
-  clear: true
-  kill: true
-  effect: true
-  enchant: true
-  xp: true
-  experience: true
-  attribute: true
-  damage: true
+  give:
+    blocked: true
+    item: DIAMOND
+  item:
+    blocked: true
+    item: STICK
+  summon:
+    blocked: true
+    item: DRAGON_EGG
+  loot:
+    blocked: true
+    item: CHEST
+  clear:
+    blocked: true
+    item: BARRIER
+  kill:
+    blocked: true
+    item: SKELETON_SKULL
+  effect:
+    blocked: true
+    item: POTION
+  enchant:
+    blocked: true
+    item: ENCHANTED_BOOK
+  xp:
+    blocked: true
+    item: EXPERIENCE_BOTTLE
+  experience:
+    blocked: true
+    item: EXPERIENCE_BOTTLE
+  attribute:
+    blocked: true
+    item: NAME_TAG
+  damage:
+    blocked: true
+    item: FIRE_CHARGE
 
   # Teleportation
-  tp: true
-  teleport: true
-  spreadplayers: true
-  ride: true
-  spectate: true
+  tp:
+    blocked: true
+    item: ENDER_PEARL
+  teleport:
+    blocked: true
+    item: ENDER_PEARL
+  spreadplayers:
+    blocked: true
+    item: GLOWSTONE_DUST
+  ride:
+    blocked: true
+    item: SADDLE
+  spectate:
+    blocked: true
+    item: ENDER_EYE
 
   # World
-  fill: true
-  setblock: true
-  clone: true
-  place: true
-  fillbiome: true
-  data: true
-  execute: true
-  function: true
-  forceload: true
-  worldborder: true
-  setworldspawn: true
-  spawnpoint: true
+  fill:
+    blocked: true
+    item: WHITE_CONCRETE
+  setblock:
+    blocked: true
+    item: GRASS_BLOCK
+  clone:
+    blocked: true
+    item: BREWING_STAND
+  place:
+    blocked: true
+    item: OAK_SAPLING
+  fillbiome:
+    blocked: true
+    item: WATER_BUCKET
+  data:
+    blocked: true
+    item: BOOK
+  execute:
+    blocked: true
+    item: COMMAND_BLOCK
+  function:
+    blocked: true
+    item: MINECART
+  forceload:
+    blocked: true
+    item: ANVIL
+  worldborder:
+    blocked: true
+    item: GLASS_PANE
+  setworldspawn:
+    blocked: true
+    item: WHITE_BED
+  spawnpoint:
+    blocked: true
+    item: BLACK_BED
 
   # Time
-  time: true
-  weather: true
-  tick: true
+  time:
+    blocked: true
+    item: CLOCK
+  weather:
+    blocked: true
+    item: CAULDRON
+  tick:
+    blocked: true
+    item: REDSTONE_TORCH
 
   # Informations
-  seed: true
-  locate: true
-  locatebiome: true
+  seed:
+    blocked: true
+    item: WHEAT_SEEDS
+  locate:
+    blocked: true
+    item: COMPASS
+  locatebiome:
+    blocked: true
+    item: COMPASS
 
   # Player data
-  recipe: true
-  advancement: true
+  recipe:
+    blocked: true
+    item: CRAFTING_TABLE
+  advancement:
+    blocked: true
+    item: GOLD_INGOT
 
   # GUI
-  title: true
-  tellraw: true
-  bossbar: true
-  playsound: true
+  title:
+    blocked: true
+    item: OAK_SIGN
+  tellraw:
+    blocked: true
+    item: ORANGE_DYE
+  bossbar:
+    blocked: true
+    item: DRAGON_HEAD
+  playsound:
+    blocked: true
+    item: JUKEBOX
 
   # Admin
-  reload: true
-  stop: true
-  debug: true
-  perf: true
-  jfr: true
-  save-all: true
-  save-on: true
-  save-off: true
+  reload:
+    blocked: true
+    item: PISTON
+  stop:
+    blocked: true
+    item: SHIELD
+  debug:
+    blocked: true
+    item: FISHING_ROD
+  perf:
+    blocked: true
+    item: TOTEM_OF_UNDYING
+  jfr:
+    blocked: true
+    item: COMMAND_BLOCK_MINECART
+  save-all:
+    blocked: true
+    item: ENDER_CHEST
+  save-on:
+    blocked: true
+    item: GREEN_DYE
+  save-off:
+    blocked: true
+    item: RED_DYE
 
   # Permissions
-  op: true
-  deop: true
+  op:
+    blocked: true
+    item: WITHER_SKELETON_SKULL
+  deop:
+    blocked: true
+    item: DIRT
 
   # Players
-  kick: true
-  ban: true
-  ban-ip: true
-  pardon: true
-  pardon-ip: true
-  whitelist: true
+  kick:
+    blocked: true
+    item: DEBUG_STICK
+  ban:
+    blocked: true
+    item: APPLE
+  ban-ip:
+    blocked: true
+    item: GOLDEN_APPLE
+  pardon:
+    blocked: true
+    item: OAK_LEAVES
+  pardon-ip:
+    blocked: true
+    item: SPRUCE_LEAVES
+  whitelist:
+    blocked: true
+    item: WHITE_BANNER
 
   # Misc
-  publish: true
-  trigger: true
+  publish:
+    blocked: true
+    item: NETHERITE_INGOT
+  trigger:
+    blocked: true
+    item: COMMAND_BLOCK
