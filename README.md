@@ -23,7 +23,7 @@ Before updating:
 4. Reconfigure settings if necessary.
 5. Start the server again and enjoy.
 
-*SafeSurvival v1.0.7+ will say if the config is outdated or not*
+*SafeSurvival v1.1+ will update automatically `config.yml`*
 
 # ✨ Features
 
