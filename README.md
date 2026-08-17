@@ -191,10 +191,11 @@ Example:
 
 # 📌 Commands
 
-| Command | Description |
-|---------|-------------|
-| `/ss config` | Opens the SafeSurvival configuration GUI. |*
-| `/ss reload` | Reload plugin
+| Command      | Description                                                 |
+|--------------|-------------------------------------------------------------|
+| `/ss config` | Opens the SafeSurvival configuration GUI. (only on v1.0.4+) |
+| `/ss reload` | Reload plugin (only on v1.0.4+)                             |
+| `/ss status` | Safe Survival status (only on v1.1+)                        |
 
 ---
 
