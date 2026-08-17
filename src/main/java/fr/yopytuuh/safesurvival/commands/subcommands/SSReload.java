@@ -13,6 +13,11 @@ public class SSReload {
 
     public void execute(CommandSender sender, String[] args) {
 
+        if(!sender.hasPermission("safesurvival.reload")) {
+            sender.sendMessage("§7[§2SafeSurvival§7]§c You don't have permission to use this.");
+            return;
+        }
+
         config.reload();
         sender.sendMessage("§7[§2SafeSurvival§7]§6 reloaded.");
     }

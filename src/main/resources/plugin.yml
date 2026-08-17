@@ -11,11 +11,23 @@ prefix: "SafeSurvival"
 
 commands:
   ss:
-    description: "safe survival commands"
+    description: safe survival commands
     permission: safesurvival.admin
-    usage: "/ss"
+    usage: /ss
 
 permissions:
   safesurvival.admin:
-    description: "Admin permissions"
+    description: Admin permissions
+    default: op
+  safesurvival.config:
+    description: Allows access to the SafeSurvival configuration GUI
+    default: op
+  safesurvival.reload:
+    description: Allows the use of /ss reload
+    default: op
+  safesurvival.status:
+    description: Allows the use of /ss status
+    default: op
+  safesurvival.alerts:
+    description: Allows receiving SafeSurvival alerts
     default: op

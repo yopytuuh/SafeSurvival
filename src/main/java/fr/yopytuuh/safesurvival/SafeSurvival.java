@@ -24,7 +24,7 @@ public final class SafeSurvival extends JavaPlugin {
         PluginCommand command = getCommand("ss");
 
         if (command != null) {
-            command.setExecutor(new SSCommand(config));
+            command.setExecutor(new SSCommand(this, config));
             command.setTabCompleter(new SSTabCompleter());
         }
 

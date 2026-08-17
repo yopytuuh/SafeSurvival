@@ -1,11 +1,19 @@
-# SAFE SURVIVAL CONFIG
-# Here you can choose which commands to enable or disable.
 #
-# true = blocked
-# false = allowed
+# SAFE SURVIVAL CONFIG
+# Please do not change this.
+config-version: 1
+
+# Here you can change the settings of Safe Survival
+
+alerts:
+  # enable alerts to op players (perm: safesurvival.alerts) when a player uses a blocked command
+  enabled: true
+  # send an alert to every player when a player uses a blocked command
+  broadcast: true
+  # send an alert in the console when a player uses a blocked command
+  console: false
 
 commands:
-
   # you can add your commands by typing the command name without the '/'
   # and adding the same structure with the options 'blocked' and 'item'
   # the item is shown in '/ss config' gui

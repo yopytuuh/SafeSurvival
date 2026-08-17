@@ -2,18 +2,21 @@ package fr.yopytuuh.safesurvival.commands;
 
 import fr.yopytuuh.safesurvival.commands.subcommands.SSConfig;
 import fr.yopytuuh.safesurvival.commands.subcommands.SSReload;
+import fr.yopytuuh.safesurvival.commands.subcommands.SSStatus;
 import fr.yopytuuh.safesurvival.manager.ConfigManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class SSCommand implements CommandExecutor {
 
+    private JavaPlugin plugin;
     private ConfigManager config;
 
-    public SSCommand(ConfigManager config) {
+    public SSCommand(JavaPlugin plugin, ConfigManager config) {
+        this.plugin = plugin;
         this.config = config;
     }
 
@@ -21,10 +24,11 @@ public class SSCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
 
         final SSConfig configCommand = new SSConfig(config);
+        final SSStatus statusCommand = new SSStatus(plugin, config);
         final SSReload reloadCommand = new SSReload(config);
 
         if (args.length == 0) {
-            sender.sendMessage("§cUsage : /ss <config | reload>");
+            sender.sendMessage("§cUsage : /ss <config | status | reload>");
             return true;
         }
 
@@ -32,6 +36,9 @@ public class SSCommand implements CommandExecutor {
 
             case "config":
                 configCommand.execute(sender, args);
+                break;
+            case "status":
+                statusCommand.execute(sender, args);
                 break;
             case "reload":
                 reloadCommand.execute(sender, args);

@@ -122,6 +122,11 @@ public class SSConfig {
             return;
         }
 
+        if(!sender.hasPermission("safesurvival.config")) {
+            sender.sendMessage("§7[§2SafeSurvival§7]§c You don't have permission to use this.");
+            return;
+        }
+
         createPage(player, 1).open(player);
 
     }
