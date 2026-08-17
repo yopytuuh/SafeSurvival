@@ -12,9 +12,18 @@ You can add **new commands from other plugins** in the config.yml file to block 
 
 ---
 
-# ✨ Features
+## 💎 Updating
 
-(if you were using an older version than v1.0.5+ and you are updating please delete config.yml and let it be recreated)
+When updating SafeSurvival to a new version, your `config.yml` may need to be updated.
+
+Before updating:
+1. Stop the server.
+2. Delete the old `config.yml`.
+3. Start the server, a new `config.yml` will be created.
+4. Reconfigure settings if necessary.
+5. Start the server again and enjoy.
+
+# ✨ Features
 
 - 🚫 Block vanilla commands individually
 - ⚙️ Fully configurable through `config.yml`
