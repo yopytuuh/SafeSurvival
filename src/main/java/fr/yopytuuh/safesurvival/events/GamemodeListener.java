@@ -1,7 +1,10 @@
 package fr.yopytuuh.safesurvival.events;
 
 import fr.yopytuuh.safesurvival.manager.ConfigManager;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
@@ -15,12 +18,29 @@ public class GamemodeListener implements Listener {
     }
 
     @EventHandler
-    public void onGamemode(PlayerGameModeChangeEvent event) {
+    public void onPlayerGameModeChangeEvent(PlayerGameModeChangeEvent event) {
         boolean block = config.isCommandBlocked("gamemode");
 
         if(block) {
             event.setCancelled(true);
-            Bukkit.broadcastMessage("§7[§2SafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o/gamemode");
+
+            Component alert = LegacyComponentSerializer.legacySection().deserialize("§7[§2SafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o/gamemode");
+
+            if(config.get().getBoolean("alerts.broadcast", true)) {
+                Bukkit.broadcast(alert);
+            } else {
+                if(config.get().getBoolean("alerts.enabled", true)) {
+                    for(Player player : Bukkit.getOnlinePlayers()) {
+                        if(player.hasPermission("safesurvival.alerts")) {
+                            player.sendMessage(alert);
+                        }
+                    }
+                }
+            }
+
+            if(config.get().getBoolean("alerts.console", true)) {
+                Bukkit.getConsoleSender().sendMessage(alert);
+            }
         }
     }
 
