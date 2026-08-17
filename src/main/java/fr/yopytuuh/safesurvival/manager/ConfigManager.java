@@ -16,14 +16,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ConfigManager {
 
     private final JavaPlugin plugin;
-    private final Set<String> blockedCommands = new HashSet<>();
 
     private static final int CURRENT_CONFIG_VERSION = 2;
 
@@ -85,6 +82,7 @@ public class ConfigManager {
             try {
                 material = Material.valueOf(item.toUpperCase());
             } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Invalid item name: '" + item + "' for command '" + command + "' in config.yml.");
                 material = Material.COMMAND_BLOCK;
             }
 

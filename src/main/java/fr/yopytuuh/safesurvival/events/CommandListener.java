@@ -1,6 +1,7 @@
 package fr.yopytuuh.safesurvival.events;
 
 import fr.yopytuuh.safesurvival.manager.ConfigManager;
+import fr.yopytuuh.safesurvival.manager.LogManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
@@ -16,9 +17,11 @@ import java.util.Set;
 public class CommandListener implements Listener {
 
     private final ConfigManager config;
+    private final LogManager logger;
 
-    public CommandListener(ConfigManager config) {
+    public CommandListener(ConfigManager config, LogManager logger) {
         this.config = config;
+        this.logger = logger;
     }
 
     @EventHandler
@@ -38,7 +41,7 @@ public class CommandListener implements Listener {
         }
 
         event.setCancelled(true);
-
+        logger.log(event.getPlayer().getName(), event.getMessage());
         Component alert = LegacyComponentSerializer.legacySection().deserialize("§7[§2SafeSurvival§7]§6 " + event.getPlayer().getName() + " tried this: §c§o" + event.getMessage());
 
         if(config.get().getBoolean("alerts.broadcast", true)) {
@@ -52,7 +55,6 @@ public class CommandListener implements Listener {
                 }
             }
         }
-
         if(config.get().getBoolean("alerts.console", true)) {
             Bukkit.getConsoleSender().sendMessage(alert);
         }

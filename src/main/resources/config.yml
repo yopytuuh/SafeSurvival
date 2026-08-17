@@ -13,6 +13,9 @@ alerts:
   # send an alert in the console when a player uses a blocked command
   console: false
 
+# enable or not logs in the plugin folder
+logs-enabled: true
+
 commands:
   # you can add your commands by typing the command name without the '/'
   # and adding the same structure with the options 'blocked' and 'item'

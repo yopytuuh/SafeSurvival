@@ -34,15 +34,31 @@ public class SSStatus {
             }
         }
 
+        boolean alerts = config.get().getBoolean("alerts.enabled", true);
+        boolean broadcast = config.get().getBoolean("alerts.enabled", true);
+        boolean console = config.get().getBoolean("alerts.console", false);
+
+        boolean active = true;
+
+        if(blocked == 0) {
+            active = false;
+        }
+
         sender.sendMessage("§6---------------------------------------------------");
         sender.sendMessage("§b§lSafeSurvival Status");
-        sender.sendMessage("§7Version: §f" + plugin.getPluginMeta().getVersion());
         sender.sendMessage("");
-        sender.sendMessage("§7Protection: §aActive");
+        sender.sendMessage("§7Version: §fv" + plugin.getPluginMeta().getVersion());
+        sender.sendMessage("§7Config version: §fv" + config.getCurrentConfigVersion());
+        sender.sendMessage("");
+        sender.sendMessage("§7Protection: " + (active ? "§aActive" : "§cInactive"));
+        sender.sendMessage("");
         sender.sendMessage("§7Blocked commands: §c" + blocked);
         sender.sendMessage("§7Allowed commands: §a" + allowed);
-        sender.sendMessage("");
         sender.sendMessage("§7Total commands: §9" + commands);
+        sender.sendMessage("");
+        sender.sendMessage("§7Alerts: §9" + (alerts ? "§aEnabled" : "§cDisabled"));
+        sender.sendMessage("§7Broadcast: §9" + (broadcast ? "§aEnabled" : "§cDisabled"));
+        sender.sendMessage("§7Console: §9" + (console ? "§aEnabled" : "§cDisabled"));
         sender.sendMessage("§6---------------------------------------------------");
 
     }

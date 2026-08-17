@@ -19,6 +19,11 @@ permissions:
   safesurvival.admin:
     description: Admin permissions
     default: op
+    children:
+      safesurvival.config: true
+      safesurvival.reload: true
+      safesurvival.status: true
+      safesurvival.alerts: true
   safesurvival.config:
     description: Allows access to the SafeSurvival configuration GUI
     default: op

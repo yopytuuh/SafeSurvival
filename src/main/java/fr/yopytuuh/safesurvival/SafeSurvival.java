@@ -5,6 +5,7 @@ import fr.yopytuuh.safesurvival.events.CommandListener;
 import fr.yopytuuh.safesurvival.events.GUIListener;
 import fr.yopytuuh.safesurvival.events.GamemodeListener;
 import fr.yopytuuh.safesurvival.manager.ConfigManager;
+import fr.yopytuuh.safesurvival.manager.LogManager;
 import fr.yopytuuh.safesurvival.utils.SSTabCompleter;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,10 +17,11 @@ public final class SafeSurvival extends JavaPlugin {
 
         ConfigManager config = new ConfigManager(this);
         config.load();
+        LogManager logger = new LogManager(this, config);
 
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
-        getServer().getPluginManager().registerEvents(new CommandListener(config), this);
-        getServer().getPluginManager().registerEvents(new GamemodeListener(config), this);
+        getServer().getPluginManager().registerEvents(new CommandListener(config, logger), this);
+        getServer().getPluginManager().registerEvents(new GamemodeListener(config, logger), this);
 
         PluginCommand command = getCommand("ss");
 
