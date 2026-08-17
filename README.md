@@ -23,6 +23,8 @@ Before updating:
 4. Reconfigure settings if necessary.
 5. Start the server again and enjoy.
 
+*SafeSurvival v1.0.7+ will say if the config is outdated or not*
+
 # ✨ Features
 
 - 🚫 Block vanilla commands individually
