@@ -8,7 +8,7 @@ Designed for private SMPs and friend groups, it provides an easy-to-use configur
 
 **Only v1.0 of SafeSurvival is fully compatible with any spigot/bukkit/paper version**
 
-You can add **new commands from other plugins** in the config.yml file to block these commands too *(These new commands cannot be visible in `/ss config`)*
+You can add **new commands from other plugins** in the config.yml file to block these commands too *(These new commands can now be visible in `/ss config` ith SafeSurvival v1.0.5+)*
 
 ---
 
