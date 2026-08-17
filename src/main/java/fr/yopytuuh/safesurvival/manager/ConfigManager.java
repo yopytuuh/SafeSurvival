@@ -36,8 +36,21 @@ public class ConfigManager {
         checkConfigVersion();
     }
 
-    public void reload() {
-        plugin.reloadConfig();
+    public boolean reload() {
+        try {
+            plugin.reloadConfig();
+
+            if(get().getConfigurationSection("commands") == null) {
+                return false;
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            plugin.getLogger().severe("Failed to reload config.yml.");
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void save() {

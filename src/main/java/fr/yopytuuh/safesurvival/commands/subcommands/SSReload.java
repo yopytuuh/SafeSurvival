@@ -18,7 +18,10 @@ public class SSReload {
             return;
         }
 
-        config.reload();
+        if(!config.reload()) {
+            sender.sendMessage("§7[§2SafeSurvival§7]§c There was an error, please check the console.");
+            return;
+        }
         sender.sendMessage("§7[§2SafeSurvival§7]§6 reloaded.");
     }
 
